@@ -184,7 +184,7 @@ class Precision(BaseCheckerSubtool):
             self.layer_marker = BisectMarker(len(network), args.direction)
 
     def mark_layers(self, network, indices):
-        EXCLUDE_LAYER_NAMES = ["CONSTANT"]
+        EXCLUDE_LAYER_NAMES = ["CONSTANT", "CONCATENATION", "SHUFFLE", "IDENTITY"]
         EXCLUDE_LAYERS = [getattr(trt.LayerType, attr) for attr in EXCLUDE_LAYER_NAMES if hasattr(trt.LayerType, attr)]
 
         # First, reset, since changes from the previous call will persist.
